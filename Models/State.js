@@ -1,6 +1,9 @@
+import MockBackend from 'Services/MockBackend';
+
 class State {
 	constructor() {
 		this.pages = [];
+		this.mockBackend = new MockBackend();
 	}
 
 	pushPage(p) {

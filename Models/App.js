@@ -1,6 +1,5 @@
 import HomePage from 'Pages/HomePage';
 import EditHikePage from 'Pages/EditHikePage';
-import MockBackend from 'Services/MockBackend';
 import { state } from 'Models/State';
 
 class Hike {
@@ -16,22 +15,16 @@ class Hike {
 
 export default class App {
 	constructor() {
-		this.mockBackend = new MockBackend();
+		this.state = state;
 		this.hikes = [];
-		this.mockBackend.getHikes().then(hikes => {
+		this.state.mockBackend.getHikes().then(hikes => {
 			this.hikes = hikes;
 		});
-		this.state = state;
 		this.state.pushPage(new HomePage());
 	}
 
 	goToHike(arg) {
-		// console.log(JSON.stringify(state));
 		this.state.pushPage(new EditHikePage(arg.data));
 	}
 
-	// get pages() {
-	// 	console.log("pages are: " + console.log(JSON.stringify(state.pages)));
-	// 	return this.state.pages;
-	// }
 }
