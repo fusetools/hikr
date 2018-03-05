@@ -1,6 +1,23 @@
 import HomePage from 'Pages/HomePage';
 import EditHikePage from 'Pages/EditHikePage';
-import { state } from 'Models/State';
+import MockBackend from 'Services/MockBackend';
+
+class Current {
+	constructor() {
+		this.pages = [];
+		this.mockBackend = new MockBackend();
+	}
+
+	pushPage(p) {
+		this.pages.push(p);
+	}
+
+	popPage() {
+		this.pages.pop();
+	}
+}
+
+export let current = new Current()
 
 class Hike {
 	constructor(id, name, location, distance, rating, comments) {
@@ -15,16 +32,16 @@ class Hike {
 
 export default class App {
 	constructor() {
-		this.state = state;
+		this.current = current;
 		this.hikes = [];
-		this.state.mockBackend.getHikes().then(hikes => {
+		this.current.mockBackend.getHikes().then(hikes => {
 			this.hikes = hikes;
 		});
-		this.state.pushPage(new HomePage());
+		this.current.pushPage(new HomePage());
 	}
 
 	goToHike(arg) {
-		this.state.pushPage(new EditHikePage(arg.data));
+		this.current.pushPage(new EditHikePage(arg.data));
 	}
 
 }
