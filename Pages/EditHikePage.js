@@ -18,11 +18,11 @@ export default class EditHikePage {
 			console.log("There was an error updating hike " + this.hike.id + ": " + err);
 		});
 		
-		current.popPage();
+		current.pages.pop();
 	}
 
 	cancel() {
 		Object.assign(this.hike, this.hikeCopy);
-		current.popPage();
+		current.pages.pop();
 	}
 }
