@@ -21,14 +21,17 @@ export default class App {
 		this.mockBackend.getHikes().then(hikes => {
 			this.hikes = hikes;
 		});
-		state.pushPage(new HomePage());
+		this.state = state;
+		this.state.pushPage(new HomePage());
 	}
 
 	goToHike(arg) {
-		state.pushPage(new EditHikePage(arg.data));
+		// console.log(JSON.stringify(state));
+		this.state.pushPage(new EditHikePage(arg.data));
 	}
 
-	get pages() {
-		return state.pages;
-	}
+	// get pages() {
+	// 	console.log("pages are: " + console.log(JSON.stringify(state.pages)));
+	// 	return this.state.pages;
+	// }
 }
