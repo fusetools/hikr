@@ -1,4 +1,4 @@
-import State from "../Models/State";
+import { state } from "../Models/State";
 
 export default class EditHikePage {
 	constructor(hike) {
@@ -20,11 +20,11 @@ export default class EditHikePage {
 		// 	console.log("There was an error updating hike " + this.hike.id + ": " + err);
 		// });
 		
-		State.popPage();
+		state.popPage();
 	}
 
 	cancel() {
 		Object.assign(this.hike, this.hikeCopy);
-		State.popPage();
+		state.popPage();
 	}
 }

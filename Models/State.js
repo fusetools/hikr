@@ -1,17 +1,15 @@
-export default class State {
+class State {
 	constructor() {
-		this.list = [];
-	}
-
-	get pages() {
-		return this.list;
+		this.pages = [];
 	}
 
 	pushPage(p) {
-		this.list.push(p);
+		this.pages.push(p);
 	}
 
 	popPage() {
-		this.list.pop();
+		this.pages.pop();
 	}
 }
+
+export let state = new State()

@@ -1,7 +1,7 @@
 import HomePage from 'Pages/HomePage';
 import EditHikePage from 'Pages/EditHikePage';
 import MockBackend from 'Services/MockBackend';
-import State from 'Models/State';
+import { state } from 'Models/State';
 
 class Hike {
 	constructor(id, name, location, distance, rating, comments) {
@@ -21,15 +21,14 @@ export default class App {
 		this.mockBackend.getHikes().then(hikes => {
 			this.hikes = hikes;
 		});
-		this.state = new State();
-		this.state.pushPage(new HomePage());
+		state.pushPage(new HomePage());
 	}
 
 	goToHike(arg) {
-		this.state.pushPage(new EditHikePage(arg.data));
+		state.pushPage(new EditHikePage(arg.data));
 	}
 
 	get pages() {
-		return this.state.pages;
+		return state.pages;
 	}
 }
