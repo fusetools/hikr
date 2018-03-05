@@ -13,17 +13,44 @@ class Hike {
 	}
 }
 
+class Current {
+	constructor() {
+		this.list = [];
+	}
+
+	get pages() {
+		return this.list;
+	}
+
+	pushPage(p) {
+		this.list.push(p);
+	}
+
+	popPage() {
+		this.list.pop();
+	}
+}
+
+export var current = new Current();
+
 export default class App {
 	constructor() {
 		this.mockBackend = new MockBackend();
-		this.pages = [new HomePage()];
 		this.hikes = [];
 		this.mockBackend.getHikes().then(hikes => {
 			this.hikes = hikes;
 		});
+		this.state = current = new Current();
+		current.pushPage(new HomePage());
+		// current.pages.push(new HomePage());
 	}
 
 	goToHike(arg) {
-		this.pages.push(new EditHikePage(arg.data, this.pages, this.mockBackend));
+		current.pushPage(new EditHikePage(arg.data));
+		// current.pages.push(new EditHikePage(arg.data));
+	}
+
+	get pages() {
+		return current.pages;
 	}
 }
