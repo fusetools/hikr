@@ -1,10 +1,9 @@
-import { current } from "../Models/App";
+import State from "../Models/State";
 
 export default class EditHikePage {
 	constructor(hike) {
 		// this.mockBackend = mockBackend;
 		// this.pages = pages;
-		
 		this.hike = hike;
 		this.hikeCopy = Object.assign({}, hike);
 	}
@@ -21,11 +20,11 @@ export default class EditHikePage {
 		// 	console.log("There was an error updating hike " + this.hike.id + ": " + err);
 		// });
 		
-		current.popPage();
+		State.popPage();
 	}
 
 	cancel() {
 		Object.assign(this.hike, this.hikeCopy);
-		current.popPage();
+		State.popPage();
 	}
 }
