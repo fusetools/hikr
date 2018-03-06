@@ -2,7 +2,7 @@
 	<ScrollView>
 		<StackPanel>
 			<Each Items="{hikes}">
-				<Button Text="{name}" Clicked="{goToHike}" />
+				<Button Text="{name}" Clicked="{current.navigationService.goToHike}" />
 			</Each>
 		</StackPanel>
 	</ScrollView>

@@ -1,9 +1,8 @@
-import HomePage from 'Pages/HomePage';
-import EditHikePage from 'Pages/EditHikePage';
+import NavigationService from 'Services/NavigationService';
 import MockBackend from 'Services/MockBackend';
 
 export let current = {
-	pages: [],
+	navigationService: new NavigationService(),
 	mockBackend: new MockBackend()
 };
 
@@ -25,11 +24,6 @@ export default class App {
 		this.current.mockBackend.getHikes().then(hikes => {
 			this.hikes = hikes;
 		});
-		this.current.pages.push(new HomePage());
+		this.current.navigationService.goToHome();
 	}
-
-	goToHike(arg) {
-		this.current.pages.push(new EditHikePage(arg.data));
-	}
-
 }
