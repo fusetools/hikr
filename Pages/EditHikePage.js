@@ -18,11 +18,11 @@ export default class EditHikePage {
 			console.log("There was an error updating hike " + this.hike.id + ": " + err);
 		});
 		
-		current.navigationService.goBack();
+		current.navigation.goBack();
 	}
 
 	cancel() {
 		Object.assign(this.hike, this.hikeCopy);
-		current.navigationService.goBack();
+		current.navigation.goBack();
 	}
 }

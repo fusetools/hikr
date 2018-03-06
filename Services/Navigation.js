@@ -1,7 +1,7 @@
 import HomePage from 'Pages/HomePage';
 import EditHikePage from 'Pages/EditHikePage';
 
-export default class NavigationService {
+export default class Navigation {
 	constructor() {
 		this.pages = [];
 	}

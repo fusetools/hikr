@@ -1,8 +1,8 @@
-import NavigationService from 'Services/NavigationService';
+import Navigation from 'Services/Navigation';
 import MockBackend from 'Services/MockBackend';
 
 export let current = {
-	navigationService: new NavigationService(),
+	navigation: new Navigation(),
 	mockBackend: new MockBackend()
 };
 
@@ -21,9 +21,9 @@ export default class App {
 	constructor() {
 		this.current = current;
 		this.hikes = [];
-		this.current.mockBackend.getHikes().then(hikes => {
+		current.mockBackend.getHikes().then(hikes => {
 			this.hikes = hikes;
 		});
-		this.current.navigationService.goToHome();
+		current.navigation.goToHome();
 	}
 }
